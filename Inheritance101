@@ -1,0 +1,264 @@
+//============================================//
+//============================================//
+//== Written By..: AJ                       ==//
+//== Date Written: March 17, 2024           ==//
+//== Purpose.....: Inheritance- IS A, HAS A ==//
+//============================================//
+//============================================//
+
+package Inheritance101;
+
+public class TestClassInheritance
+{
+	public static void main(String[] args)
+	{
+		// Our 3 animal variables that call the 'toString' respective to each one.
+		// The parameters are in that specific order due to the order of setters
+		// in their respective constructor method.
+		Dog newDog = new Dog(23, 2, "Courage", "Pink Beagle", "February 18, 1979");
+		Cat newCat = new Cat(20, 3, "Garfield", 9);
+		Bird newBird = new Bird(12, 3, 70.8, true);
+		
+		// Print our 3 animal variables.
+		System.out.println(newDog);
+		System.out.println();
+		System.out.println(newCat);
+		System.out.println();
+		System.out.println(newBird);
+		
+	} // end of main
+
+} // end of TestClassInheritance
+
+//-----------------------------------------------------------------------------------
+
+package Inheritance101;
+
+// 'Object' is the root class in Java. Doing this
+// is redundant since it extends Object by default.
+public class Animal extends Object
+{
+	// Fields
+	// This creates a "has-a" relationship. A animal
+	// has a weight. A animal has a height.
+	private int weight;
+	private int height;
+	
+	// Constructor Method
+	public Animal(int weight, int height)
+	{
+		super();
+		setWeight(weight);
+		setHeight(height);
+	}
+
+	// Setters and Getters
+	public int getWeight() 
+	{
+		return weight;
+	}
+
+	public void setWeight(int weight)
+	{
+		this.weight = weight;
+	}
+
+	public int getHeight() 
+	{
+		return height;
+	}
+
+	public void setHeight(int height)
+	{
+		this.height = height;
+	}
+
+	// Displays the weight and height of an animal.
+	public String toString() 
+	{
+		return "It's an Animal Weighing "  + weight + " lbs" +
+				" and has a Height of " + height + " feet";
+	}
+} // end of Animal
+
+//-----------------------------------------------------------------------------------
+
+package Inheritance101;
+
+// 'extends' creates a child class that inherits attributes
+// and methods from the parent class. Dog is child, Animal is parent.
+// This creates a "is-a" relationship. A dog is an animal.
+public class Dog extends Animal
+{
+	// Fields
+	// This creates a "has-a" relationship. A dog has a name.
+	// A dog has a breed. A dog has a date of birth.
+	private String name;
+	private String breed;
+	private String dateOfBirth;
+	
+	// Constructor Method
+	public Dog(int weight, int height, String name,
+			   String breed, String dateOfBirth)
+	{
+		// 'super()' calls the constructor method of the parent class.
+		super(weight, height);
+		setName(name);
+		setBreed(breed);
+		setDateOfBirth(dateOfBirth);
+	}
+
+	// Setters and Getters
+	public String getName() 
+	{
+		return name;
+	}
+
+	public void setName(String name) 
+	{
+		this.name = name;
+	}
+	
+	public String getBreed()
+	{
+		return breed;
+	}
+
+	public void setBreed(String breed) 
+	{
+		this.breed = breed;
+	}
+
+	public String getDateOfBirth()
+	{
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) 
+	{
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	// Displays name, breed, and date of birth of dog.
+	// 'super.toString()' calls the toString of child classes parent class.
+	public String toString()
+	{
+		return "My Dog is Named " + name + ". " + super.toString() + 
+				". It's Breed is a " + breed + " and it was Born on " + dateOfBirth + ".";
+	}
+} // end of Dog
+
+//-----------------------------------------------------------------------------------
+
+package Inheritance101;
+
+// 'extends' creates a child class that inherits attributes
+// and methods from the parent class. Cat is child, Animal is parent.
+// This creates a "is-a" relationship. A cat is an animal.
+public class Cat extends Animal
+{
+	// Fields
+	// This creates a "has-a" relationship. A cat has a name.
+	// A cat has 1 to 9 lives.
+	private String name;
+	private int nineLives;
+	
+	// Constructor Method
+	public Cat(int weight, int height, 
+			   String name, int nineLives)
+	{
+		// 'super()' calls the constructor method of the parent class.
+		super(weight, height);
+		setName(name);
+		setNineLives(nineLives);
+	}
+
+	// Setters and Getters
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name) 
+	{
+		this.name = name;
+	}
+
+	public int getNineLives()
+	{
+		return nineLives;
+	}
+
+	public void setNineLives(int nineLives) 
+	{
+		this.nineLives = nineLives;
+	}
+
+	// Displays the name and lives of cat.
+	// 'super.toString()' calls the toString of child classes parent class.
+	public String toString() 
+	{
+		return "My Cat is Named " + name + ". " + super.toString() +
+				". It has " + nineLives + " Lives Left.";
+	}
+} // end of Cat
+
+//-----------------------------------------------------------------------------------
+
+package Inheritance101;
+
+// 'extends' creates a child class that inherits attributes
+// and methods from the parent class. Bird is child, Animal is parent.
+// This creates a "is-a" relationship. A bird is an animal.
+public class Bird extends Animal
+{
+	// Fields
+	// This creates a "has-a" relationship. A bird has a wing
+	// span. A bird can or cannot fly.
+	private double wingSpan;
+	private boolean canFly;
+	
+	// Constructor Method
+	public Bird(int weight, int height, 
+			    double wingSpan, boolean canFly)
+	{
+		// 'super()' calls the constructor method of the parent class.
+		super(weight, height);
+		setWingSpan(wingSpan);
+		setCanFly(canFly);
+	}
+	
+	// Getters and Setters
+	public double getWingSpan() 
+	{
+		return wingSpan;
+	}
+	
+	public void setWingSpan(double wingSpan)
+	{
+		this.wingSpan = wingSpan;
+	}
+	
+	public boolean isCanFly() 
+	{
+		return canFly;
+	}
+	
+	public void setCanFly(boolean canFly) 
+	{
+		this.canFly = canFly;
+	}
+
+	// Displays the wing span and ability to fly of bird.
+	// 'super.toString()' calls the toString of child classes parent class.
+	public String toString() 
+	{
+		// Since 'canFly' is a boolean operator, we use the ternary operator '?'
+		// to determine if it's true or false. If true, "can fly" is returned.
+		// If false, "cannot fly" is returned.
+		String abilityToFly = canFly ? "Can Fly" : "Cannot Fly";
+		
+		return "My Bird has a Wing Span of " + wingSpan + " inches and it " +
+	            abilityToFly + ". " + super.toString() + ".";		
+	}
+} // end of Bird
